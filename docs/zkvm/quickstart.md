@@ -10,7 +10,7 @@ The readme on the [factors tutorial] contains step-by-step instructions for buil
 
 Alternatively, you can start building by using one of these [demo applications], which work out-of-the-box. 
 
-If you're looking to integrate the zkVM into blockchain applications, you'll want to check out the [Bonsai Quick Start]. 
+If you're looking to integrate the zkVM into blockchain applications, you'll want to check out the [Bonsai Quick Start] page. 
 
 ## Building and Running zkVM Applications
 
@@ -27,4 +27,4 @@ Options such as GPU acceleration and skipping the proof generation are documente
 [cargo risczero]: https://docs.rs/cargo-risczero/0.16/cargo_risczero/
 [demo applications]: https://github.com/risc0/risc0/tree/v0.16.0/examples
 [factors tutorial]: https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#readme
-[Bonsai Quickstart]: ../../bonsai/setting-up-bonsai
+[Bonsai Quick Start]: ../../bonsai/quickstart
