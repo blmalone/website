@@ -16,8 +16,15 @@ If you're looking to integrate the zkVM into blockchain applications, you'll wan
 
 You can build and run your zkVM applications using your own hardware, or you can upload your [guest program] to [Bonsai] and make requests for proof generation as needed. 
 
+### Local Proving
 To run the zkVM on your own machine, we recommend at least 16GB of RAM. 
 The readme files on the [zkVM demo applications] show `cargo` commands for local proof generation. 
+
+### Remote Proving
+To run the zkVM remotely using [Bonsai], [request access] and set the environment variables `BONSAI_API_KEY=<YOUR_API_KEY>` and `BONSAI_API_URL=<BONSAI_URL>`.
+Additional information is available in the [starter template](https://github.com/risc0/risc0/tree/main/templates/rust-starter#running-proofs-remotely-on-bonsai)
+
+### Other options
 Options such as GPU acceleration and skipping the proof generation are documented in the [feature flags]. 
 
 [guest program]: ../../terminology#guest-program
@@ -28,3 +35,4 @@ Options such as GPU acceleration and skipping the proof generation are documente
 [demo applications]: https://github.com/risc0/risc0/tree/v0.16.0/examples
 [factors tutorial]: https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#readme
 [Bonsai Quick Start]: ../../bonsai/quickstart
+[request access]: https://bonsai.xyz/apply
