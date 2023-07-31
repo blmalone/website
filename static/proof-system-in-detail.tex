@@ -422,7 +422,11 @@ where $\epsilon_\mathsf{ALI}$ is the soundness error associated with combining c
 and $\epsilon_\mathsf{DEEP}$ is the soundness error associated with the DEEP query point. \\
 \\
 We differ from \cite{ethSTARK} here in that we use powers of a single randomness for combining constraints. 
-Our results here align with \cite{FRIsummary}, though since our constraints may access up to 5 rows of the trace, we find a different constant in the numerator in $\epsilon_\mathsf{DEEP}$.
+Our results here align with \cite{FRIsummary}, aside from the change from $\mathsf{d}$ to $\mathsf{d-1}$ in the numerator in $\epsilon_\mathsf{DEEP}$.%
+\footnote{
+  Although $\mathsf{d}$ is defined to be the maximum degree among the constraints, the $\mathsf{d}$ term in \cite{FRIsummary}'s Theorem 8 is actually counting the number of DEEP validity polynomials (i.e. segment polynomials). 
+  Because our selectors (i.e., the indicator flags that manage constraint enforcement) are built into the constraints themselves, we find the number of DEEP validity polynomials to be one less than $\mathsf{d}$.
+}
 We find 
 \[
   \epsilon_\mathsf{ALI} = 
@@ -432,17 +436,17 @@ and
 \[
   \epsilon_\mathsf{DEEP} = 
   \frac{
-    \mathsf{L}\cdot(4(\mathsf{k}+1)+(\mathsf{k}-1))}
+    \mathsf{L}\cdot(\mathsf{d}-1)((\mathsf{k}+1)+(\mathsf{k}-1))}
     {|\mathbb{K}|-|\mathsf{H}|-|\mathsf{D}|}
 \]
 \subsubsection{Error Bound on FRI}
 The major results for the soundness of FRI in the list-decoding regime are Theorems 1.5 and 8.3 from \cite{proxGaps}. 
 As above, our soundness results for this part differ from the presentation in \cite{proxGaps} and \cite{ethSTARK} in that we use powers of a single random field element for FRI batching. 
-Again, our results here align with \cite{FRIsummary}; we find 
+Again, our results here align with \cite{FRIsummary} (with a batch size of $\mathsf{w_{RAP}}+\mathsf{d}-1$). We find 
 
 \[ 
     \epsilon_\mathsf{FRI} =
-    (\mathsf{w_{RAP}}+4-\frac{1}{2})\cdot\frac{(m+\frac{1}{2})^7}{3\sqrt{\rho}^3}\cdot\frac{|\mathsf{D}|^2}{|\mathbb{K}|} 
+    ((\mathsf{w_{RAP}}+\mathsf{d}-1)-\frac{1}{2})\cdot\frac{(m+\frac{1}{2})^7}{3\sqrt{\rho}^3}\cdot\frac{|\mathsf{D}|^2}{|\mathbb{K}|} 
     + 
     \frac{(2m+1)\cdot(|\mathsf{D}|+1)\cdot\sum^r_{i=1}t_i}{\sqrt{\rho}\cdot|\mathbb{K}|}
     +
