@@ -15,6 +15,8 @@ A proving service that allows on-chain applications to request and receive zkVM 
 - **[The RISC Zero Proof System]**:
 The cryptographic techniques underlying the zkVM.
 
+We also have reference documentation for our Rust code, which can be found at [https://docs.rs/risc0-zkvm/](https://docs.rs/risc0-zkvm/) for the `risc0-zkvm` crate. For our other Rust crates, links to their reference docs can be found in [this list](https://github.com/risc0/risc0#rust-libraries).
+
 ---
 ## What is RISC Zero?
 

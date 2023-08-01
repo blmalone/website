@@ -116,6 +116,11 @@ module.exports = {
           id: "zkvm/quickstart"
         },
         {
+          type: "link",
+          label: "API Reference Docs",
+          href: "https://docs.rs/risc0-zkvm/"
+        },
+        {
           type: "doc",
           label: 'The Structure of a zkVM App',
           id: "zkvm/developer-guide/zkvm-app-structure",
