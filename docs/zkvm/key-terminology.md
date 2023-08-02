@@ -88,6 +88,10 @@ See also: [commit]
 [method]: #method
 A single 'main' entry point for code that runs inside the [zkVM].
 
+### Prove
+[prove]: #prove
+Generate a [receipt] that serves as [proof] of correct execution of a [guest program].
+
 ### Prover
 [proven]: #prover
 [prover]: #prover
