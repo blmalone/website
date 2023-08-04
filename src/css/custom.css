@@ -52,3 +52,8 @@
 [data-theme='dark'] .mermaid .messageText {
       stroke:none !important; fill:white !important;
 }
+
+/* Our additions */
+.anchor {
+  scroll-margin-top: 50pt;
+}

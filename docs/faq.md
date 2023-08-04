@@ -18,11 +18,11 @@ id: tech_faq
 -------------------------------
 
 ## ZK Basics
+<a class="anchor" id="zkp"></a>
 <details closed>
-<summary>Q:
-What is a zero-knowledge proof?
+<summary>
+Q: What is a zero-knowledge proof?
 </summary>
-A:
 A zero-knowledge proof (or ZKP) is <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">"a method by which one party (the prover) can prove to another party (the verifier) that a given statement is true [without] conveying any additional information"</a>. 
 RISC Zero's zkVM makes it easy to produce ZKPs to prove the correct execution of arbitrary code. <br/>
 <br/>
@@ -94,6 +94,7 @@ For more details, see <a href="https://www.youtube.com/watch?v=QwzrBHHkzFE&list=
 <br/>
 
 ### Features, Performance, and Limitations
+<a class="anchor" id="benchmarks"></a>
 <details closed>
 <summary>
 Q: Are performance benchmarks available?
