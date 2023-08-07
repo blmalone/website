@@ -37,6 +37,7 @@ Any inputs Alice passes to the program during execution will be private unless A
 
 ## Building on the zkVM
 ### Code Troubleshooting
+<a class="anchor" id="build-errors"></a>
 <details closed>
 <summary>
 Q: I'm running into build errors. Where should I look for help?
@@ -47,6 +48,7 @@ If you can't find your problem here you can open a <a href="https://github.com/r
 <br/>
 
 ### zkVM Application Design
+<a class="anchor" id="using-receipts"></a>
 <details closed>
 <summary>
 Q:
@@ -61,6 +63,7 @@ Bob can verify the receipt was created by this code by constructing the <a href=
 In our <a href="https://github.com/risc0/risc0/tree/v0.16.0/examples">examples</a>, the receipt is generated and verified within the same program, but typically the receipt will be passed to a third party for verification.
 </details>
 
+<a class="anchor" id="io-buffer-overflows"></a>
 <details closed>
 <summary>
 Q:  When can information be shared with the guest zkVM? How do you prevent buffer overflows?
@@ -70,6 +73,7 @@ Data can be sent during program execution from the host to the guest via a memor
 The host-writeable memory is write-once, meaning that adjacent memory regions cannot be overwritten and executed.
 </details>
 
+<a class="anchor" id="what-should-guest-do"></a>
 <details closed>
 <summary>
 Q:
@@ -83,6 +87,7 @@ That is, other parties should not need to trust the host's output or operations 
 </details>
 
 <details closed>
+<a class="anchor" id="image-id"></a>
 <summary>
 Q:
 What exactly is the image ID?
@@ -102,6 +107,7 @@ Q: Are performance benchmarks available?
 A: Yes. We have a <a href="https://dev.risczero.com/datasheet.pdf">datasheet</a> with performance benchmarks, and you can also generate your own benchmarks. More details are available on the <a href="https://dev.risczero.com/zkvm/benchmarks">benchmarks page</a>.
 </details>
 
+<a class="anchor" id="language-support"></a>
 <details closed>
 <summary>
 Q: What languages can I use to develop zkVM applications?
@@ -112,6 +118,7 @@ Development in C++ is also possible, but proceed at your own risk.
 You can reference the <a href="https://github.com/risc0/risc0/tree/v0.11.0/examples/cpp">examples in C++</a> that were included in the 0.11 release, although we've made substantial changes since that release, and we're available to answer questions on <a href="https://discord.gg/risczero"> Discord</a> as needed.
 </details>
 
+<a class="anchor" id="max-length"></a>
 <details closed>
 <summary>
 Q: What is the maximum execution length for a program running on the zkVM?
@@ -120,6 +127,7 @@ A: Since we added support for <a href="https://www.risczero.com/news/continuatio
 So far, we've made proofs for executions that exceed 4 billion cycles, and there's plenty of room to expand that further. 
 </details>
 
+<a class="anchor" id="rust-crate"></a>
 <details closed>
 <summary>
 Q: I have a specific Rust crate I'd like to use. Will it work inside the zkVM?
@@ -132,6 +140,7 @@ If the crate you'd like to use isn't working, there may be a workaround <a href=
 If there's not already a workaround, please <a href="https://github.com/risc0/risc0/issues/new">open an issue</a> or reach out on <a href="https://discord.gg/risczero">Discord.</a>
 </details>
 
+<a class="anchor" id="large-data"></a>
 <details closed>
 <summary>
 Q:
@@ -147,6 +156,7 @@ If the data can be processed externally and simply needs to be verifiably unchan
 In the future, we plan to lift these processing limitations using continuations and recursion.
 </details>
 
+<a class="anchor" id="acceleration"></a>
 <details closed>
 <summary>
 Q:
@@ -163,6 +173,7 @@ For many other applications, it is possible to perform most computation on the h
 
 
 ## The RISC Zero Circuits
+<a class="anchor" id="dont-write-circuits"></a>
 <details closed>
 <summary>
 Q: Do I need to write a ZK circuit to build on RISC Zero?
@@ -172,6 +183,7 @@ We take care of the circuit building so that you can focus on building applicati
 Everything you'll need to build is outlined in the <a href="https://dev.risczero.com/zkvm">zkVM docs</a> and the <a href="https://dev.risczero.com/bonsai">Bonsai docs</a>.
 </details>
 
+<a class="anchor" id="circuits"></a>
 <details closed>
 <summary>
 Q: What do RISC Zero's circuits do?
@@ -184,6 +196,7 @@ RISC Zero has three circuits: one that executes RISC-V code, one that's used for
 
 </details>
 
+<a class="anchor" id="building-our-circuit"></a>
 <details closed>
 <summary>
 Q: How did you make your RISC-V circuit?
@@ -200,6 +213,7 @@ Because the data structures supporting all three of these need to match very car
 <br/>
 
 ## Security
+<a class="anchor" id="image-id-security"></a>
 <details closed>
 <summary>
 Q:
@@ -213,6 +227,7 @@ At the moment, the conversion from Rust source code to ELF binary is non-determi
 What this means for zkVM application design is that checking the correctness of the ImageID requires access to the compiled ELF file. 
 For the latest status on this issue, check the discussion on the <a href="https://https://github.com/risc0/risc0/issues/116">GitHub issue</a>.*
 </details>
+<a class="anchor" id="tampering-with-code"></a>
 <details closed>
 <summary>
 Q: If the guest zkVM lives on the host machine, can’t the host still tamper with the compiled code?
