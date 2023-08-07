@@ -55,6 +55,14 @@ const config = {
     },
   ],
 
+  scripts: [
+    {
+      src: 'https://plausible.io/js/script.js',
+      'data-domain':'risczero.com',
+      defer: true,
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
