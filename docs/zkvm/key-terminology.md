@@ -15,6 +15,8 @@ See also: [Arithmetic Circuits]
 [clock cycles]: #clock-cycles
 The smallest unit of compute in the zkVM [circuit], analogous to a clock cycle on a physical CPU. The complexity of a [guest program]'s [execution] is measured in clock cycles as they directly affect the memory, proof size, and time performance of the [zkVM].
 
+Generally, a single cycle corresponds to a single [RISC-V] operation. However, some operations require two cycles.
+
 ### Commit
 [commit]: #commit
 [env::commit()]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/guest/env/fn.commit.html#
