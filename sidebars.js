@@ -121,25 +121,13 @@ module.exports = {
         },
         {
           type: "doc",
-          label: "A Blockchain Dev's Guide to zkVM Development",
-          id: "bonsai/blockchain-zkvm-guide",
+          label: "Bonsai on Ethereum",
+          id: "bonsai/bonsai-on-eth",
         },
         {
-          type: "category",
-          label: "Bonsai ETH Relay",
-          collapsed: false,
-          items: [
-            {
-              type: "doc",
-              label: "ETH Relay Overview",
-              id: "bonsai/eth-relay/eth-relay-overview",
-            },
-            {
-              type: "doc",
-              label: "Deployment",
-              id: "bonsai/eth-relay/eth-relay-deployment",
-            },
-          ]
+          type: "doc",
+          label: "A Blockchain Dev's Guide to zkVM Development",
+          id: "bonsai/blockchain-zkvm-guide",
         },
       ],
     },
