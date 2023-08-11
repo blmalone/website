@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 slug: /terminology
+displayed_sidebar: GettingStartedSidebar
 ---
 
 # Key Terminology

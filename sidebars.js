@@ -6,25 +6,40 @@ module.exports = {
       id: "introduction",
     },
     {
-      type: "doc",
-      label: "Terminology",
-      id: "zkvm/key-terminology",
-    },
-    {
-      type: "doc",
-      label: "FAQ",
-      id: "tech_faq"
-    },
-    {
       type: "category",
-      label: "zkVM",
+      label: "Bonsai",
+      link: {
+        type: `doc`,
+        id: 'bonsai/bonsai-overview',
+      },
       collapsed: false,
       items: [
         {
           type: "doc",
-          label: "Overview",
-          id: "zkvm/zkvm_overview"
+          label: "Quick Start",
+          id: "bonsai/quickstart"
         },
+        {
+          type: "doc",
+          label: "Bonsai on Ethereum",
+          id: "bonsai/bonsai-on-eth",
+        },
+        {
+          type: "doc",
+          label: "A Blockchain Dev's Guide to zkVM Development",
+          id: "bonsai/blockchain-zkvm-guide",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "zkVM",
+      link: {
+        type: `doc`,
+        id: 'zkvm/zkvm_overview',
+      },
+      collapsed: false,
+      items: [
         {
           type: "doc",
           label: "Quick Start",
@@ -101,33 +116,6 @@ module.exports = {
           type: "link",
           label: "Source code",
           href: "https://github.com/risc0/risc0"
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Bonsai",
-      collapsed: false,
-      items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "bonsai/bonsai-overview",
-        },
-        {
-          type: "doc",
-          label: "Quick Start",
-          id: "bonsai/quickstart"
-        },
-        {
-          type: "doc",
-          label: "Bonsai on Ethereum",
-          id: "bonsai/bonsai-on-eth",
-        },
-        {
-          type: "doc",
-          label: "A Blockchain Dev's Guide to zkVM Development",
-          id: "bonsai/blockchain-zkvm-guide",
         },
       ],
     },

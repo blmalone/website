@@ -84,13 +84,13 @@ const config = {
           },
           {
             position: 'left',
-            label: 'zkVM',
-            to: 'zkVM',
+            label: 'Terminology',
+            to: 'terminology',
           },
           {
             position: 'left',
-            label: 'Bonsai',
-            to: 'bonsai',
+            label: 'FAQ',
+            to: 'tech_faq',
           },
           {
             href: 'https://github.com/Risc0',

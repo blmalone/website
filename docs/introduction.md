@@ -6,11 +6,11 @@ displayed_sidebar: GettingStartedSidebar
 
 Welcome to the [RISC Zero] documentation! This site contains documentation for:
 
-- **[The RISC Zero zkVM]**: 
-A tool for building zero-knowledge software applications.
-
 - **[Bonsai]**:
-A proving service that allows on-chain and off-chain applications to request and receive zkVM proofs.
+A software development stack that allows on-chain and off-chain applications to request and receive proofs from our zkVM. 
+
+- **[The RISC Zero zkVM]**: 
+A high-performance tool for proving correct execution of arbitrary code. 
 
 - **[The RISC Zero Proof System]**:
 The cryptographic techniques underlying the zkVM.
@@ -40,6 +40,17 @@ To enable ZK builders to thrive, we're working on two core products: the [zkVM] 
 [our work with Optimism]: https://www.theblock.co/post/240929/optimism-zk-proof-proposals?utm_source=twitter&utm_medium=social
 [RISC Zero]: https://risczero.com
 [zkVM]: ./zkvm/
+
+## Bonsai
+In 2023, we released [Bonsai], a proving service that allows on-chain and off-chain applications to request and receive [zkVM] proofs. 
+
+Bonsai is a general purpose zero-knowledge proving service that allows for any chain, any protocol, and any application to take advantage of ZK proofs. It is massively parallel, programmable, and performant.
+
+Bonsai lets you integrate zero-knowledge proofs directly into any smart contracts without the need for custom circuits. This allows for ZK to be integrated directly into dApps on any EVM chain, with the potential to support any other ecosystem.
+
+Our zkVM is the foundation of Bonsai and enables widespread language compatibility with support for provable Rust code and the potential for zero-knowledge provable code in any language that compiles to RISC-V like C++, Rust, Go, and more. With a combination of recursive proofs, a bespoke circuit compiler, state continuations, and continuous improvements to the proving algorithm, Bonsai enables anyone to generate highly performant ZK proofs for a variety of applications. 
+
+Read more on Bonsai [here](./bonsai/bonsai-overview.md).
 
 ## The RISC Zero zkVM
 The RISC Zero [zkVM], first released in [April 2022], can prove the correct execution of arbitrary code, allowing developers to build ZK applications in mature languages like Rust and C++. 
@@ -72,17 +83,6 @@ Given the ease of development and the performance, the zkVM is the clear choice 
 [top 1000 Rust crates]: https://risc0.github.io/ghpages/dev/crate-validation/index.html
 [performance]: https://dev.risczero.com/zkvm/benchmarks
 [continuations]: https://risczero.com/news/continuations
-
-## Bonsai
-In 2023, we released [Bonsai], a proving service that allows on-chain and off-chain applications to request and receive [zkVM] proofs. 
-
-Bonsai is a general purpose zero-knowledge proving service that allows for any chain, any protocol, and any application to take advantage of ZK proofs. It is massively parallel, programmable, and performant.
-
-Bonsai lets you integrate zero-knowledge proofs directly into any smart contracts without the need for custom circuits. This allows for ZK to be integrated directly into dApps on any EVM chain, with the potential to support any other ecosystem.
-
-Our zkVM is the foundation of Bonsai and enables widespread language compatibility with support for provable Rust code and the potential for zero-knowledge provable code in any language that compiles to RISC-V like C++, Solidity, Go, and more. With a combination of recursive proofs, a bespoke circuit compiler, state continuations, and continuous improvements to the proving algorithm, Bonsai enables anyone to generate highly performant ZK proofs for a variety of applications. 
-
-Read more on Bonsai [here](./bonsai/bonsai-overview.md).
 
 ## Connect with us
 

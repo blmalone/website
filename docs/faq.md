@@ -1,5 +1,6 @@
 ---
 id: tech_faq
+displayed_sidebar: GettingStartedSidebar
 ---
 # FAQ
 
