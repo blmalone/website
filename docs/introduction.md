@@ -4,13 +4,13 @@ displayed_sidebar: GettingStartedSidebar
 ---
 # Introduction
 
-Welcome to the RISC Zero documentation! This site contains documentation for:
+Welcome to the [RISC Zero] documentation! This site contains documentation for:
 
 - **[The RISC Zero zkVM]**: 
 A tool for building zero-knowledge software applications.
-  
+
 - **[Bonsai]**:
-A proving service that allows on-chain applications to request and receive zkVM proofs.
+A proving service that allows on-chain and off-chain applications to request and receive zkVM proofs.
 
 - **[The RISC Zero Proof System]**:
 The cryptographic techniques underlying the zkVM.
@@ -20,36 +20,65 @@ We also have reference documentation for our Rust code, which can be found at [h
 ---
 ## What is RISC Zero?
 
-RISC Zero is a startup building the RISC Zero [`zero-knowledge virtual machine`](/zkvm/) (zkVM) as a major step towards improving the security and trustworthiness of distributed applications. 
-RISC Zero zkVM bridges the gap between zero-knowledge proof (ZKP) research and widely-supported programming languages such as C++ and Rust. 
+[RISC Zero] is a [startup] creating the infrastructure & tooling necessary for developers around the globe to build software that leverages ZK technology.
 
-ZKP technology enables programs' output to carry proof of provenance and correct execution that can be cryptographically verified by a receiver without access to the programs' inputs. 
-Stripping away the jargon, this means that the output of the program can be checked for correctness by someone who cannot see its inputs. 
+ZK technology is staged to re-shape the way we interact digitally. 
+Historically, the only method for confirming the correct execution of a software application was through redundant computation. 
+ZK introduces a new option: **verifiable computation**. 
 
-This verifiability allows applications to be decentralized that previously required a trusted third party, a game changer for the resilience and economics of operating the computing infrastructure we all rely on.
+It's now possible to pair a program's output with a self-certifying *receipt*, allowing a skeptical third party to verify correct execution — and the verifier doesn't need to repeat the original computation or even see the inputs to the program! 
 
-Foundational work on SNARKs and [STARKs](./reference-docs/about-starks.md) shows the potential of ZKP-based computations, but to date, building applications has required the adoption of new programming languages with sparse tooling support. 
-_RISC Zero is removing those barriers by bringing existing languages, tools, and developer skills to ZKP development._ 
-RISC Zero is achieving this by inventing a uniquely high-performance ZKP prover and then using the performance headroom to build a _zero-knowledge virtual machine (zkVM)_ that implements a standard RISC-V instruction set. 
-Although difficult, emulation of RISC-V makes compatibility possible with existing mature languages and toolchains. 
-In concrete terms, this looks like seamless integration between "host" application code written in a high level language running natively on the host processor (e.g. Rust on arm64 Mac) and "guest" code in the same language executing inside our zkVM (e.g. Rust on RISC-V, and specifically RV32IM). 
-This is similar to the very successful pattern used in Nvidia's CUDA C++ toolchain, but with a ZKP engine in place of a GPU.
+Verifiable computation is a game changer for the resilience and economics of operating the computing infrastructure we all rely on. It creates a number of emergent use cases which we are excited to enable. 
+Key among these use cases are:
+- [zk coprocessors], which enable on-chain applications to reduce gas costs by moving the complex part of their application logic off-chain
+- blockchain infrastructure, including [our work with Optimism]
 
-## zkVM
+To enable ZK builders to thrive, we're working on two core products: the [zkVM] and [Bonsai]. 
 
-A zero-knowledge virtual machine (zkVM) is a virtual machine that runs trusted code and generates proofs that authenticate the zkVM output. RISC Zero's zkVM implementation, based on the RISC-V architecture, executes code and produces a [computational receipt].
+[startup]: https://risczero.com/news/series-a
+[zk coprocessors]: https://twitter.com/RiscZero/status/1677316664772132864
+[our work with Optimism]: https://www.theblock.co/post/240929/optimism-zk-proof-proposals?utm_source=twitter&utm_medium=social
+[RISC Zero]: https://risczero.com
+[zkVM]: ./zkvm/
 
-Writing zkApps on RISC Zero is (almost) as straightforward as building any other Rust project. No need to learn a custom language or any fancy math or cryptography. 
+## The RISC Zero zkVM
+The RISC Zero [zkVM], first released in [April 2022], can prove the correct execution of arbitrary code, allowing developers to build ZK applications in mature languages like Rust and C++. 
+This release marked a major breakthrough in enabling ZK software development: the zkVM made it possible to build a ZK application *without having to build a circuit* and *without writing in a custom language*. 
 
-![A zkVM architecture diagram](img/zkvm.jpg)
+By allowing developers to build in Rust and leverage the maturity of the Rust ecosystem, the zkVM has made it possible for developers to quickly build meaningful ZK applications, with no background in advanced mathematics or cryptography. 
 
-Read more about the zkVM [here](./zkvm/zkvm_overview.md) or start building with our [zkVM Quick Start](./zkvm/quickstart.md)
+These applications include: 
+- **[JSON]**: prove the contents of some entry in a JSON file, while keeping the rest of the data private
+- **[Where's Waldo]**: prove that Waldo appears in a JPG file, while keeping the rest of the image private
+- **[ZK Checkmate]**: prove that you see a mate-in-one, without revealing the winning move
+- **[ZK Proof of Exploit]**: prove that you *could* exploit an Ethereum account, without revealing the exploit
+- **[ECDSA signature verification]**: prove the validity of an ECDSA signature
+
+[April 2022]: https://www.risczero.com/news/announce
+[JSON]: https://github.com/risc0/risc0/tree/v0.16.1/examples/json
+[Where's Waldo]: https://risczero.com/news/waldo
+[ZK Checkmate]: https://github.com/risc0/risc0/tree/v0.16.1/examples/chess
+[ZK Proof of Exploit]: https://risczero.com/news/zkpoex
+[ECDSA signature verification]: https://github.com/risc0/risc0/tree/v0.16.1/examples/ecdsa
+
+These examples are all made possible by **leveraging a mature software ecosystem**: over 70% of the [top 1000 Rust crates] work out-of-the-box in the zkVM. 
+Being able to import Rust crates is a game changer for the ZK software world: projects that would take months or years to build on other platforms can be solved trivially on our platform. 
+
+In addition to being far easier to build on, we're also delivering on [performance]. 
+The zkVM has GPU acceleration for CUDA and Metal, and with [continuations] we've enabled parallel proving of large programs. 
+
+Given the ease of development and the performance, the zkVM is the clear choice for your ZK needs. 
+
+[top 1000 Rust crates]: https://risc0.github.io/ghpages/dev/crate-validation/index.html
+[performance]: https://dev.risczero.com/zkvm/benchmarks
+[continuations]: https://risczero.com/news/continuations
 
 ## Bonsai
+In 2023, we released [Bonsai], a proving service that allows on-chain and off-chain applications to request and receive [zkVM] proofs. 
 
-Bonsai is a general purpose zero-knowledge proof network that allows for any chain, any protocol, and any application to take advantage of ZK proofs. It is massively parallel, programmable, and performant.
+Bonsai is a general purpose zero-knowledge proving service that allows for any chain, any protocol, and any application to take advantage of ZK proofs. It is massively parallel, programmable, and performant.
 
-Our zero-knowledge proving network lets you integrate zero-knowledge proofs directly into any smart contracts without the need for custom circuits. This allows for ZK to be integrated directly into dApps on any EVM chain, with the potential to support any other ecosystem.
+Bonsai lets you integrate zero-knowledge proofs directly into any smart contracts without the need for custom circuits. This allows for ZK to be integrated directly into dApps on any EVM chain, with the potential to support any other ecosystem.
 
 Our zkVM is the foundation of Bonsai and enables widespread language compatibility with support for provable Rust code and the potential for zero-knowledge provable code in any language that compiles to RISC-V like C++, Solidity, Go, and more. With a combination of recursive proofs, a bespoke circuit compiler, state continuations, and continuous improvements to the proving algorithm, Bonsai enables anyone to generate highly performant ZK proofs for a variety of applications. 
 
