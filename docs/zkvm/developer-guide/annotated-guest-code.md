@@ -54,4 +54,4 @@ To see guest code for a zkVM application that involves host-guest communication 
 [method]: ../key-terminology.md#method
 [zkVM Quick Start]: ../quickstart.md
 [zkVM Overview]: ../zkvm_overview.md
-[factors demo]: https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#step-6-guest-multiply-two-values-and-commit-their-result
+[factors demo]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#step-6-guest-multiply-two-values-and-commit-their-result

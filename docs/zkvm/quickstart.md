@@ -30,9 +30,9 @@ Options such as GPU acceleration and skipping the proof generation are documente
 [guest program]: ../../terminology#guest-program
 [Bonsai]: ../../bonsai/
 [feature flags]: https://github.com/risc0/risc0#feature-flags
-[zkVM demo applications]: https://github.com/risc0/risc0/tree/v0.16.0/examples/
+[zkVM demo applications]: https://github.com/risc0/risc0/tree/v0.17.0/examples/
 [cargo risczero]: https://docs.rs/cargo-risczero/0.16/cargo_risczero/
-[demo applications]: https://github.com/risc0/risc0/tree/v0.16.0/examples
-[factors tutorial]: https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#readme
+[demo applications]: https://github.com/risc0/risc0/tree/v0.17.0/examples
+[factors tutorial]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#readme
 [Bonsai Quick Start]: ../../bonsai/quickstart
 [request access]: https://bonsai.xyz/apply

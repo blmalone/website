@@ -42,5 +42,5 @@ For examples of host code in applications that involve guest-host communication,
 [method]: ../key-terminology.md#method
 [zkVM Quick Start]: ../quickstart.md
 [zkVM Overview]: ../zkvm_overview.md
-[factors demo]: https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#step-5-host-share-two-values-with-the-guest
+[factors demo]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#step-5-host-share-two-values-with-the-guest
 [JSON demo]: https://github.com/risc0/risc0/blob/main/examples/json/src/main.rs

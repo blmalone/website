@@ -65,4 +65,4 @@ Check out [Bonsai].
 [zero-knowledge virtual machine]: ../terminology#zero-knowledge-virtual-machine-zkvm
 [zkvm]: ../terminology#zero-knowledge-virtual-machine-zkvm
 [zkVM Quick Start]: ./quickstart.md
-[zkVM example applications]: https://github.com/risc0/risc0/tree/v0.16.0/examples
+[zkVM example applications]: https://github.com/risc0/risc0/tree/v0.17.0/examples

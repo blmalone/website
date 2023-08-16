@@ -450,4 +450,4 @@ More likely, an adversary will attempt to construct a valid `RoundMessage` that 
 
 ## Closing
 
-Hopefully, this is a useful introduction to how ZKPs and specifically RISC Zero can be used to build trustworthy distributed applications. There are a growing set of [examples](https://github.com/risc0/risc0/tree/v0.16.0/examples) in C++ and Rust. If you run into any problems feel free to ask on [Discord](https://discord.gg/risczero) and check [GitHub Issues](https://github.com/risc0/risc0/issues).
+Hopefully, this is a useful introduction to how ZKPs and specifically RISC Zero can be used to build trustworthy distributed applications. There are a growing set of [examples](https://github.com/risc0/risc0/tree/v0.17.0/examples) in C++ and Rust. If you run into any problems feel free to ask on [Discord](https://discord.gg/risczero) and check [GitHub Issues](https://github.com/risc0/risc0/issues).

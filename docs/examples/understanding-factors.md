@@ -3,7 +3,7 @@ slug: starter
 title: Understanding Factors
 ---
 
-The [Factors tutorial](https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#tutorial) tells you how to write code that proves you know the factors of a number -- but what is this code doing? What mechanisms does the RISC Zero zkVM use to prove the execution of the source code you provide it?
+The [Factors tutorial](https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#tutorial) tells you how to write code that proves you know the factors of a number -- but what is this code doing? What mechanisms does the RISC Zero zkVM use to prove the execution of the source code you provide it?
 
 The complete answer to those questions requires detailed and precise cryptographic arguments. Nevertheless, here we present a short summary of what the zkVM is doing in the Factors tutorial, as an overview of the general approach of the RISC Zero zkVM. We hope that this overview helps orient you to the components of the RISC Zero zkVM, and gives a sense of why it might be plausible that code executed in the zkVM could be proven to parties who don't trust the prover.
 
@@ -15,7 +15,7 @@ By reading this post, you should learn, at a high level:
 
 This post will not cover:
 * A detailed cryptographic analysis of the RISC Zero zkVM (see our [proof system explainers and reference materials](../explainers))
-* How to write code using the RISC Zero zkVM (see the [Factors tutorial](https://github.com/risc0/risc0/tree/v0.16.0/examples/factors#tutorial), or [our examples generally](https://github.com/risc0/risc0/tree/v0.16.0/examples))
+* How to write code using the RISC Zero zkVM (see the [Factors tutorial](https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#tutorial), or [our examples generally](https://github.com/risc0/risc0/tree/v0.17.0/examples))
 
 While the general concepts discussed in this article should persist across versions, our API is undergoing many changes prior to our 1.0 release, so some details here may be version-specific. This article was last updated for [v0.14](https://github.com/risc0/risc0/releases/tag/v0.14.0).
 

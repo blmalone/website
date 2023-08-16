@@ -61,7 +61,7 @@ At a minimum, Bob will need access to the <a href="https://dev.risczero.com/term
 For most cases, Bob will want to know what code was run, and will therefore also want the <a href="https://dev.risczero.com/terminology#elf-binary">ELF file</a> or the source code that generated it.
 Bob can verify the receipt was created by this code by constructing the <a href="https://dev.risczero.com/terminology#image-id">image ID</a> from the given ELF file and using it for verification. <br/>
 <br/>
-In our <a href="https://github.com/risc0/risc0/tree/v0.16.0/examples">examples</a>, the receipt is generated and verified within the same program, but typically the receipt will be passed to a third party for verification.
+In our <a href="https://github.com/risc0/risc0/tree/v0.17.0/examples">examples</a>, the receipt is generated and verified within the same program, but typically the receipt will be passed to a third party for verification.
 </details>
 
 <a class="anchor" id="io-buffer-overflows"></a>
