@@ -77,6 +77,11 @@ module.exports = {
         },
         {
           type: "doc",
+          label: 'Acceleration',
+          id: "zkvm/developer-guide/acceleration",
+        },
+        {
+          type: "doc",
           label: "Performance Benchmarks",
           id: "zkvm/benchmarks"
         },
