@@ -1,5 +1,5 @@
 name: Broken link check
-on: 
+on:
   schedule:
     # every day at midnight
     - cron: '0 0 * * *'  
@@ -9,15 +9,39 @@ jobs:
     runs-on: ubuntu-latest
     name: Check for broken links
     steps:
-      - name: Check for broken links
+
+      - name: Check dev.risczero.com links
         id: link-report
         uses: risc0/link-checker@v1.0.2
         with:
-          # Required:
-          url: "https://www.risczero.com"
-          # optional:
+          url: "https://dev.risczero.com"
           honorRobotExclusions: false
-          ignorePatterns: "github,google,twitter,etherscan"
-          recursiveLinks: true # Check all URLs on all reachable pages (could take a while)
+          ignorePatterns: ""
+          recursiveLinks: true
+
+      #- name: Get the result
+      #  run: echo "${{steps.link-report.outputs.result}}"
+
+      - name: Check risczero.com links
+        id: link-report
+        uses: risc0/link-checker@v1.0.2
+        with:
+          url: "https://risczero.com"
+          honorRobotExclusions: false
+          ignorePatterns: "linkedin.com/company/risczero,twitter"
+          recursiveLinks: true
+
+      #- name: Get the result
+      #  run: echo "${{steps.link-report.outputs.result}}"
+
+      - name: Check bonsai.xyz links
+        id: link-report
+        uses: risc0/link-checker@v1.0.2
+        with:
+          url: "https://bonsai.xyz"
+          honorRobotExclusions: false
+          ignorePatterns: ""
+          recursiveLinks: true
+
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
