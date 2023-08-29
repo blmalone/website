@@ -169,7 +169,7 @@ module.exports = {
         {
           type: "doc",
           label: "Study Club",
-          id: "study-club/studyclub"
+          id: "studyclub"
         },
         {
           type: "link",

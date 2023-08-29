@@ -4,7 +4,7 @@ displayed_sidebar: GettingStartedSidebar
 
 # Study Club
 
-RISC Zero's Study Club sessions aim to introduce the pre-requisite concepts necessary to understand our [technology](../../explainers/)
+RISC Zero's Study Club sessions aim to introduce the pre-requisite concepts necessary to understand our [technology](./introduction.md).
 
 ## Upcoming Sessions
 We'll post announcements for upcoming talks on this page, on [Twitter](https://twitter.com/risczero), and on [Discord](https://discord.gg/risczero).
