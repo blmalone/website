@@ -51,7 +51,7 @@ The details of the RISC Zero ZK-STARK are described in our [ZKP Whitepaper] and 
   * [Intro to the FRI Protocol](https://www.youtube.com/watch?v=11DIflEwx50&list=PLcPzhUaCxlCjdhONxEYZ1dgKjZh3ZvPtl&index=1)
   * [Finite Field Implementation Options: Barrett & Montgomery Multiplication](https://www.youtube.com/watch?v=hUl8ZB6hpUM&list=PLcPzhUaCxlCjdhONxEYZ1dgKjZh3ZvPtl&index=6)
 
-[zkVM]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/
+[zkVM]: https://docs.rs/risc0-zkvm/0.17/risc0_zkvm/
 [Receipt]: https://docs.rs/risc0-zkvm/0.17.0/risc0_zkvm/receipt/struct.Receipt.html
 [ReceiptMetadata]: https://docs.rs/risc0-zkvm/0.17/risc0_zkvm/receipt/struct.ReceiptMetadata.html
 [SegmentReceipts]: https://docs.rs/risc0-zkvm/0.17.0/risc0_zkvm/receipt/struct.SegmentReceipts.html
