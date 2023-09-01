@@ -11,7 +11,7 @@ jobs:
     steps:
 
       - name: Check dev.risczero.com links
-        id: link-report
+        id: link-report-devdocs
         uses: risc0/link-checker@v1.0.2
         with:
           url: "https://dev.risczero.com"
@@ -19,11 +19,11 @@ jobs:
           ignorePatterns: ""
           recursiveLinks: true
 
-      #- name: Get the result
-      #  run: echo "${{steps.link-report.outputs.result}}"
+      - name: Get the result
+        run: echo "${{steps.link-report-devdocs.outputs.result}}"
 
       - name: Check risczero.com links
-        id: link-report
+        id: link-report-risczero
         uses: risc0/link-checker@v1.0.2
         with:
           url: "https://risczero.com"
@@ -31,11 +31,11 @@ jobs:
           ignorePatterns: "linkedin.com/company/risczero,twitter"
           recursiveLinks: true
 
-      #- name: Get the result
-      #  run: echo "${{steps.link-report.outputs.result}}"
+      - name: Get the result
+        run: echo "${{steps.link-report-risczero.outputs.result}}"
 
       - name: Check bonsai.xyz links
-        id: link-report
+        id: link-report-bonsai
         uses: risc0/link-checker@v1.0.2
         with:
           url: "https://bonsai.xyz"
@@ -44,4 +44,4 @@ jobs:
           recursiveLinks: true
 
       - name: Get the result
-        run: echo "${{steps.link-report.outputs.result}}"
+        run: echo "${{steps.link-report-bonsai.outputs.result}}"
