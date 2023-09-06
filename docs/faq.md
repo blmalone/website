@@ -226,7 +226,7 @@ Someone wishing to confirm that a receipt corresponds to Rust source code can co
 *Note: We plan to enable a deterministic connection between the Rust source code and the image ID. 
 At the moment, the conversion from Rust source code to ELF binary is non-deterministic (because `cargo` builds are non-deterministic).  
 What this means for zkVM application design is that checking the correctness of the ImageID requires access to the compiled ELF file. 
-For the latest status on this issue, check the discussion on the <a href="https://https://github.com/risc0/risc0/issues/116">GitHub issue</a>.*
+For the latest status on this issue, check the discussion on the <a href="https://github.com/risc0/risc0/issues/116">GitHub issue</a>.*
 </details>
 <a class="anchor" id="tampering-with-code"></a>
 <details closed>
