@@ -70,6 +70,15 @@ const config = {
         defaultMode: 'dark',
         respectPrefersColorScheme: false,
       },
+      algolia: {
+        appId: 'TQC8F4X8Z5',      
+        apiKey: '96f324a5e3029cd7b5ba98c91068a7a3',  // Public API key
+        indexName: 'risczero',
+        searchPagePath: 'search',
+  
+        // Leaving at the default of `true` for now
+        contextualSearch: true,
+      },
       navbar: {
         title: 'RISC Zero Developer Docs',
         logo: {
