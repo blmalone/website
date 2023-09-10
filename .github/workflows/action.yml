@@ -1,47 +1,84 @@
-name: Broken link check
+name: Broken Link Checks
 on:
   schedule:
-    # every day at midnight
-    - cron: '0 0 * * *'  
+    # Daily at midnight PST (cron values use UTC) #
+    - cron: '0 7 * * *'
+ 
     
 jobs:
-  broken_link_checker_job:
+  bonsai-broken-links:
     runs-on: ubuntu-latest
-    name: Check for broken links
     steps:
-
-      - name: Check dev.risczero.com links
-        id: link-report-devdocs
-        uses: risc0/link-checker@v1.0.2
+      - name: Broken Link Check
+        uses: risc0/action-my-broken-link-checker@v2.3.3
         with:
-          url: "https://dev.risczero.com"
-          honorRobotExclusions: false
-          ignorePatterns: ""
-          recursiveLinks: true
+          url: https://bonsai.xyz
+          cmd_params: '--verbose --buffer-size=8192 --skip-tls-verification --color=always --ignore-fragments --exclude="(linkedin.com/company/risczero)" '
+    
 
-      - name: Get the result
-        run: echo "${{steps.link-report-devdocs.outputs.result}}"
-
-      - name: Check risczero.com links
-        id: link-report-risczero
-        uses: risc0/link-checker@v1.0.2
+  dev-risczero-broken-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Broken Link Check
+        uses: risc0/action-my-broken-link-checker@v2.3.3
         with:
-          url: "https://risczero.com"
-          honorRobotExclusions: false
-          ignorePatterns: "linkedin.com/company/risczero,twitter"
-          recursiveLinks: true
+          url: https://dev.risczero.com
+          cmd_params: '--verbose --buffer-size=8192 --skip-tls-verification --color=always --ignore-fragments --exclude="(linkedin.com/company/risczero|stackoverflow.com/questions/tagged/risczero)" '
+          
 
-      - name: Get the result
-        run: echo "${{steps.link-report-risczero.outputs.result}}"
-
-      - name: Check bonsai.xyz links
-        id: link-report-bonsai
-        uses: risc0/link-checker@v1.0.2
+  risczero-broken-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Broken Link Check
+        uses: risc0/action-my-broken-link-checker@v2.3.3
         with:
-          url: "https://bonsai.xyz"
-          honorRobotExclusions: false
-          ignorePatterns: ""
-          recursiveLinks: true
+          url: https://risczero.com
+          cmd_params: '--verbose --buffer-size=8192 --skip-tls-verification --color=always --ignore-fragments --exclude="(linkedin.com/company/risczero|fonts.googleapis.com|fonts.gstatic.com|blog.chain.link/what-is-a-zero-knowledge-proof-zkp|crates/sha3|crates/cargo-risczero|crates/revm|zklisbon.com)" '
 
-      - name: Get the result
-        run: echo "${{steps.link-report-bonsai.outputs.result}}"
+
+  check-known-exceptions:
+    runs-on: self-hosted
+    steps:
+      - name: Check Exceptions for Broken Links
+        run: |
+          ### Define Site Exceptions to Check for 404s ###
+          EXCEPTIONS=(
+          https://linkedin.com/company/risczero
+          https://crates.io/crates/cargo-risczero
+          https://crates.io/crates/sha3
+          https://crates.io/crates/revm
+          https://blog.chain.link/what-is-a-zero-knowledge-proof-zkp/
+          https://www.zklisbon.com/
+
+          )
+
+          #### Runs `curl` and stores HTTP response status codes for each site ###
+          for i in "${EXCEPTIONS[@]}"
+          do
+            # NOTE: `curl` command utilizes 'Accept: text/html' to avoid 404s for crates.io sites #
+            HTTP_CODE=$(curl -I $i -H 'Accept: text/html' | head -n 1 | cut -d$' ' -f2)
+            
+            if [ "$HTTP_CODE" == "404" ]; then
+                echo -e "$HTTP_CODE found - $i"
+                echo -e "$HTTP_CODE - $i" >> site-exceptions-http-codes.txt
+            else
+                echo -e "\nAddress $i exists - HTTP CODE = $HTTP_CODE \n"
+                echo -e "$HTTP_CODE - $i" >> site-exceptions-http-codes.txt
+            fi
+
+          done
+
+          ### Checks for 404s in HTTP Codes; Fails and exits if found; Succeeds and exits otherwise ###
+          if grep -q 404 "site-exceptions-http-codes.txt"; then
+            echo -e "404 errors Found:\n"
+            cat site-exceptions-http-codes.txt | grep 404
+            echo -e "\n404s Must Be Updated or Removed... Exiting...\n"
+            exit 1
+          else
+            echo -e "\nNo 404 Errors Found...\n"
+            echo -e "\nHTTP Codes for Site Exceptions:\n"
+            cat site-exceptions-http-codes.txt
+            echo -e "\nJob Successful... Exiting...\n"
+            exit 0
+          fi
+
