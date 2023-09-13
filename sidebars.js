@@ -93,27 +93,27 @@ module.exports = {
             {
               type: "link",
               label: "Hello World",
-              href: "https://github.com/risc0/risc0/tree/v0.17.0/examples/factors"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/factors"
             },
             {
               type: "link",
               label: "JSON",
-              href: "https://github.com/risc0/risc0/tree/v0.17.0/examples/json"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/json"
             },
             {
               type: "link",
               label: "zkEVM",
-              href: "https://github.com/risc0/risc0/tree/v0.17.0/examples/zkevm-demo"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/zkevm-demo"
             },
             {
               type: "link",
               label: "ECDSA Signature",
-              href: "https://github.com/risc0/risc0/tree/v0.17.0/examples/ecdsa"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/ecdsa"
             },
             {
               type: "link",
               label: "Where's Waldo",
-              href: "https://github.com/risc0/risc0/tree/v0.17.0/examples/waldo"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/waldo"
             },
           ]
         },

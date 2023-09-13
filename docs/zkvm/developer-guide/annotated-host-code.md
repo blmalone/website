@@ -24,7 +24,7 @@ In this example, the host:
 All of the host functionality is described in the [`risc0-zkvm` Rust crate].
 
 ## More Complex Examples
-For examples of host code in applications that involve guest-host communication, check out the [factors demo] and the [JSON demo].
+For examples of host code in applications that involve guest-host communication, check out the [Hello World demo] and the [JSON demo].
 
 [Bonsai]: ../../bonsai/
 [executor]: ../key-terminology.md#executor
@@ -42,5 +42,5 @@ For examples of host code in applications that involve guest-host communication,
 [method]: ../key-terminology.md#method
 [zkVM Quick Start]: ../quickstart.md
 [zkVM Overview]: ../zkvm_overview.md
-[factors demo]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#step-5-host-share-two-values-with-the-guest
+[Hello World demo]: https://github.com/risc0/risc0/tree/v0.18.0/examples/hello-world
 [JSON demo]: https://github.com/risc0/risc0/blob/main/examples/json/src/main.rs

@@ -43,7 +43,7 @@ In real use cases, you would do more than nothing in this function.
 All of the guest functionality is described in the [`guest` module] of the [`risc0-zkvm` Rust crate].
 
 ## A Slightly More Complex Example
-To see guest code for a zkVM application that involves host-guest communication and journal commitments, check out the [factors demo], where the [guest] receives two inputs from the [host] and commits their product to the [journal].
+To see guest code for a zkVM application that involves host-guest communication and journal commitments, check out the [Hello World demo], where the [guest] receives two inputs from the [host] and commits their product to the [journal].
 
 [guest]: ../key-terminology.md#guest
 [guest code]: ../key-terminology.md#guest
@@ -54,4 +54,4 @@ To see guest code for a zkVM application that involves host-guest communication 
 [method]: ../key-terminology.md#method
 [zkVM Quick Start]: ../quickstart.md
 [zkVM Overview]: ../zkvm_overview.md
-[factors demo]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#step-6-guest-multiply-two-values-and-commit-their-result
+[Hello World demo]: https://github.com/risc0/risc0/tree/main/examples/hello-world

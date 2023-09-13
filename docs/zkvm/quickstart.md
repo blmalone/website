@@ -6,7 +6,7 @@ slug: ./quickstart
 # zkVM Quick Start
 
 The quickest way to get started building, managing, and testing RISC Zero projects is with the [cargo risczero] tool. 
-The readme on the [factors tutorial] contains step-by-step instructions for building your first project. 
+The [Hello World tutorial] contains step-by-step instructions for building your first project. 
 
 Alternatively, you can start building by using one of these [demo applications], which work out-of-the-box. 
 
@@ -30,9 +30,9 @@ Options such as GPU acceleration and skipping the proof generation are documente
 [guest program]: ../../terminology#guest-program
 [Bonsai]: ../../bonsai/
 [feature flags]: https://github.com/risc0/risc0#feature-flags
-[zkVM demo applications]: https://github.com/risc0/risc0/tree/v0.17.0/examples/
+[zkVM demo applications]: https://github.com/risc0/risc0/tree/v0.18.0/examples/
 [cargo risczero]: https://docs.rs/cargo-risczero/0.16/cargo_risczero/
+[Hello World tutorial]: https://github.com/risc0/risc0/tree/main/examples/hello-world/tutorial.md
 [demo applications]: https://github.com/risc0/risc0/tree/v0.17.0/examples
-[factors tutorial]: https://github.com/risc0/risc0/tree/v0.17.0/examples/factors#readme
 [Bonsai Quick Start]: ../../bonsai/quickstart
 [request access]: https://bonsai.xyz/apply
