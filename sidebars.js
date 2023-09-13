@@ -93,7 +93,7 @@ module.exports = {
             {
               type: "link",
               label: "Hello World",
-              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/factors"
+              href: "https://github.com/risc0/risc0/tree/v0.18.0/examples/hello-world"
             },
             {
               type: "link",
