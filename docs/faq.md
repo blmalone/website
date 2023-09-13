@@ -57,9 +57,9 @@ What do I do with the receipt once I’ve created it?
 </summary>
 A:
 After Alice creates a <a href="https://dev.risczero.com/terminology#receipt">receipt</a>, she'll typically pass it to Bob who will want to <a href="https://dev.risczero.com/terminology#verify">verify</a> its authenticity. 
-At a minimum, Bob will need access to the <a href="https://dev.risczero.com/terminology#image-id">image ID</a> of the expected program.
+At a minimum, Bob will need access to the <a href="https://dev.risczero.com/terminology#image-id">ImageID</a> of the expected program.
 For most cases, Bob will want to know what code was run, and will therefore also want the <a href="https://dev.risczero.com/terminology#elf-binary">ELF file</a> or the source code that generated it.
-Bob can verify the receipt was created by this code by constructing the <a href="https://dev.risczero.com/terminology#image-id">image ID</a> from the given ELF file and using it for verification. <br/>
+Bob can verify the receipt was created by this code by constructing the <a href="https://dev.risczero.com/terminology#image-id">ImageID</a> from the given ELF file and using it for verification. <br/>
 <br/>
 In our <a href="https://github.com/risc0/risc0/tree/v0.17.0/examples">examples</a>, the receipt is generated and verified within the same program, but typically the receipt will be passed to a third party for verification.
 </details>
@@ -91,11 +91,20 @@ That is, other parties should not need to trust the host's output or operations 
 <a class="anchor" id="image-id"></a>
 <summary>
 Q:
-What exactly is the image ID?
+What exactly is the ImageID of a zkVM application?
 </summary>
-A: The image ID uses hashing to relate the receipt to the code that produced the receipt. 
-Specifically, the image ID is a Merklization of the image of the initial zkVM memory state.  
-For more details, see <a href="https://www.youtube.com/watch?v=QwzrBHHkzFE&list=PLcPzhUaCxlCirUkJY0ltpjdtzWcz5U_6y&index=4">this clip from Study Club</a>.
+A: The ImageID is a unique identifier given to a zkVM application. It cryptographically relates the application binary (ELF) to its produced receipts. This bound is a critical security property that ensures applications run unaltered.
+
+Specifically, the ImageID is a Merklization of the initial zkVM memory state, or MemoryImage, produced when the zkVM loads the application binary. The memory state is hashed to produce a single deterministic value via a pure function resembling:
+
+```rust
+fn compute_image_id(used_elf_pages, page_size, page_table_addr, pc) -> ImageID
+```
+
+Note: Only the loaded parts of the application binary, `used_elf_pages,` are utilized to calculate the ImageID. Consequently, the hashing does not include elements of a compiled binary that do not affect program meaning, e.g., debug information and timestamps.
+
+As a consequence, _functionally equivilant_ binaries, from the zkVM perspective, will result in identical ImageIDs. However, the compiled binaries (ELFs) may be bitwise different if hashed directly from disk. *This does not affect the zkVM security model.*
+
 </details>
 <br/>
 
@@ -169,9 +178,6 @@ Fast cryptography is sufficient to support many ‘DeFi’ applications.
 For many other applications, it is possible to perform most computation on the host (outside the zkVM) and then verify the results in the zkVM.
 </details>
 
-<br/>
-
-
 
 ## The RISC Zero Circuits
 <a class="anchor" id="dont-write-circuits"></a>
@@ -218,24 +224,38 @@ Because the data structures supporting all three of these need to match very car
 <details closed>
 <summary>
 Q:
-How can we use the image ID to determine if program code is altered before execution?
+How can we use the ImageID to determine if an application is altered before execution?
 </summary>
-A: The image ID can be determined from the compiled ELF source code. 
-Someone wishing to confirm that a receipt corresponds to Rust source code can compile that code targeting the RISC Zero zkVM and verify that the image ID resulting from this compilation matches the image ID in the receipt. <br/> <br/>
+A: The ImageID is determined from an application's compiled binary (ELF),  explained in detail <a href="https://dev.risczero.com/tech_faq#image-id">above.</a> 
 
-*Note: We plan to enable a deterministic connection between the Rust source code and the image ID. 
-At the moment, the conversion from Rust source code to ELF binary is non-deterministic (because `cargo` builds are non-deterministic).  
-What this means for zkVM application design is that checking the correctness of the ImageID requires access to the compiled ELF file. 
-For the latest status on this issue, check the discussion on the <a href="https://github.com/risc0/risc0/issues/116">GitHub issue</a>.*
+Someone wishing to confirm that a receipt corresponds to specific Rust source code can locally reproduce a binary targeting the RISC Zero zkVM using our reproducible build tool and verify that the resulting ImageID matches the ImageID in the receipt.
+
+For example, building our [builtin zkVM test functions](https://github.com/risc0/risc0/tree/main/risc0/zkvm/methods/guest):
+
+```bash
+cargo risczero build --manifest-path risc0/zkvm/methods/guest/Cargo.toml
+```
+
+will produce similar output to:
+
+```bash
+ELFs ready at:
+ImageID: 417778745b43c82a20db33a55c2b1d6e0805e0fa7eec80c9654e7321121e97af - "target/riscv-guest/riscv32im-risc0-zkvm-elf/docker/risc0_zkvm_methods_guest/multi_test"
+ImageID: c7c399c25ecf26b79e987ed060efce1f0836a594ad1059b138b6ed2f123dad38 - "target/riscv-guest/riscv32im-risc0-zkvm-elf/docker/risc0_zkvm_methods_guest/hello_commit"
+ImageID: a51a4b747f18b7e5f36a016bdd6f885e8293dbfca2759d6667a6df8edd5f2489 - "target/riscv-guest/riscv32im-risc0-zkvm-elf/docker/risc0_zkvm_methods_guest/slice_io"
+```
+
+These ImageIDs will stay consistent across all builds due to a containerized process working together with Cargo working norms. You can find more about our reproducible builds and how we test them in this [pull request.](https://github.com/risc0/risc0/pull/799)
+
 </details>
 <a class="anchor" id="tampering-with-code"></a>
 <details closed>
 <summary>
-Q: If the guest zkVM lives on the host machine, can’t the host still tamper with the compiled code?
+Q: If the guest zkVM lives on the host machine, can’t the host still tamper with the application?
 </summary>
 A: Like other zk-STARKs, RISC Zero’s implementation makes it cryptographically infeasible to generate an invalid receipt:
 
-* If the binary is modified, then the receipt’s seal will not match the image ID of the expected binary.
+* If the binary is modified, then the receipt’s seal will not match the ImageID of the expected binary.
 * If the execution is modified, then the execution trace will be invalid.
 * If the output is modified, then the journal’s hash will not match the hash recorded in the receipt.
 
