@@ -1,7 +1,9 @@
-# Receipts
-
+# Receipts 101
+*A brief introduction to the RISC Zero [receipt].*
 ## What is a receipt?
 A receipt gives the results of your program along with proof that they were produced honestly.
+
+![From Guest Code to Receipt](../../../static/diagrams/from-rust-to-receipt.png)
 
 When you execute your [zkVM application], the output of your application is included in a [receipt]. 
 The [receipt] serves as a succinct [validity proof] for the [execution] of your application. 
@@ -33,20 +35,36 @@ Users can extract the journal from a receipt using [receipt.journal].
 [Verifying] the receipt provides cryptographic assurance that the [journal] was created honestly using the [guest program] with the expected [Image ID]. 
 Users can verify the receipt using [receipt.verify()].
 
+## Serializing and Deserializing Receipts
+For serializing and deserializing, you can use [serde](https://crates.io/crates/serde) which supports many encoding formats. 
+There isn't a one-size-fits-all solution here, but one option is: 
+
+```let bytes = bincode::serialize(&receipt);```
+
+## Happy Building!
+Hopefully, these guides and the [zkVM Quick Start] page will be sufficient for you to build your first [zkVM application]! 
+
+If you run into problems, don't be a stranger! 
+You can file an issue on [these docs] or the [examples], and we're happy to answer questions on [Discord]. 
+
 [zkVM application]: ../
-[receipt]: ../key-terminology.md#receipt
-[validity proof]: ../key-terminology.md#proof
-[execution]: ../key-terminology.md#execution-trace
-[verified]: ../key-terminology.md#verify
-[journal]: ../key-terminology.md#journal
-[seal]: ../key-terminology.md#seal
-[guest program]: ../key-terminology.md#guest-program
-[Image ID]: ../key-terminology.md#image-id
+[receipt]: ../../terminology#receipt
+[validity proof]: ../../terminology#proof
+[execution]: ../../terminology#execution-trace
+[verified]: ../../terminology#verify
+[journal]: ../../terminology#journal
+[seal]: ../../terminology#seal
+[guest program]: ../../terminology#guest-program
+[Image ID]: ../../terminology#image-id
 [SessionReceipt::verify()]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/receipt/struct.SessionReceipt.html#method.verify
-[Sessions]: ../key-terminology.md#session
-[segments]: ../key-terminology.md#segment
+[Sessions]: ../../terminology#session
+[segments]: ../../terminology#segment
 [SegmentReceipt::verify()]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/receipt/struct.SegmentReceipt.html#method.verify
 [receipt.verify()]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/receipt/struct.SessionReceipt.html#method.verify
 [receipt.journal]: https://docs.rs/risc0-zkvm/0.16/risc0_zkvm/receipt/struct.SessionReceipt.html#structfield.journal
-[verify]: ../key-terminology.md#verify
-[Verifying]: ../key-terminology.md#verify
+[verify]: ../../terminology#verify
+[Verifying]: ../../terminology#verify
+[examples]: https://github.com/risc0/risc0/tree/v0.18.0/examples/
+[these docs]: https://github.com/risc0/website
+[Discord]: https://discord.gg/risczero
+[zkVM Quick Start]: ../quickstart

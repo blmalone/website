@@ -52,27 +52,22 @@ module.exports = {
         },
         {
           type: "doc",
-          label: 'The Structure of a zkVM App',
-          id: "zkvm/developer-guide/zkvm-app-structure",
-        },
-        {
-          type: "doc",
           label: "Rust Resources",
           id: "zkvm/developer-guide/rust-resources",
         },
         {
           type: "doc",
-          label: 'Annotated Guest Code',
-          id: "zkvm/developer-guide/annotated-guest-code",
+          label: 'Guest Code 101',
+          id: "zkvm/developer-guide/guest-code-101",
         },
         {
           type: "doc",
-          label: 'Annotated Host Code',
-          id: "zkvm/developer-guide/annotated-host-code",
+          label: 'Host Code 101',
+          id: "zkvm/developer-guide/host-code-101",
         },
         {
           type: "doc",
-          label: 'Receipts',
+          label: 'Receipts 101',
           id: "zkvm/developer-guide/receipts",
         },
         {
@@ -127,13 +122,12 @@ module.exports = {
     {
       type: "category",
       label: "Proof System",
+      link: {
+        type: `doc`,
+        id: 'proof-system/proof-system',
+      },
       collapsed: false,
       items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "proof-system/proof-system",
-        },
         {
           type: "doc",
           label: "STARK by hand",

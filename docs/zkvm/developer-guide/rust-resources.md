@@ -20,6 +20,8 @@ Each night, we test the top 1000 Rust crates for compatibility with the zkVM.
 As of this writing, 71% of those tests are passing.
 You can see the latest results in our [Crate Validation Report]. 
 
+![From Guest Code to Receipt](../../../static/diagrams/from-rust-to-receipt.png)
+
 [RISC Zero zkVM]: ../
 [zkVM application]: ../
 [zkVM applications]: ../
